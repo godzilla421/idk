@@ -1,0 +1,131 @@
+local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+ 
+local Window = Rayfield:CreateWindow({
+   Name = " 💪 Arm Wrestle Simulator 💪",
+   LoadingTitle = "Made by me",
+   LoadingSubtitle = "by Brilliantnico",
+   ConfigurationSaving = {
+      Enabled = true,
+      FolderName = nil, -- Create a custom folder for your hub/game
+      FileName = "Corilis Hub"
+   },
+   Discord = { 
+      Enabled = false,
+      Invite = "noinvitelink", -- The Discord invite code, do not include discord.gg/. E.g. discord.gg/ABCD would be ABCD
+      RememberJoins = true -- Set this to false to make them join the discord every time they load it up
+   },
+   KeySystem = false, -- Set this to true to use our key system
+   KeySettings = {
+      Title = "Untitled",
+      Subtitle = "Key System",
+      Note = "Free",
+      FileName = "Key", -- It is recommended to use something unique as other scripts using Rayfield may overwrite your key file
+      SaveKey = true, -- The user's key will be saved, but if you change the key, they will be unable to use your script
+      GrabKeyFromSite = false, -- If this is true, set Key below to twhe RAW site you would like Rayfield to get the key from
+      Key = {"Hello"} -- List of keys that will be accepted by the system, can be RAW file links (pastebin, github etc) or simple strings ("hello","key22")
+   }
+})
+ 
+local MainTab = Window:CreateTab("Main", nil) -- Title, Image
+local MainSection = MainTab:CreateSection("Main")
+ 
+local Button = MainTab:CreateButton({
+   Name = "Infinity Jump",
+   Callback = function()
+        local Player = game:GetService'Players'.LocalPlayer;
+local UIS = game:GetService'UserInputService';
+ 
+_G.JumpHeight = 50;
+ 
+function Action(Object, Function) if Object ~= nil then Function(Object); end end
+ 
+UIS.InputBegan:connect(function(UserInput)
+if UserInput.UserInputType == Enum.UserInputType.Keyboard and UserInput.KeyCode == Enum.KeyCode.Space then
+Action(Player.Character.Humanoid, function(self)
+if self:GetState() == Enum.HumanoidStateType.Jumping or self:GetState() == Enum.HumanoidStateType.Freefall then
+Action(self.Parent.HumanoidRootPart, function(self)
+self.Velocity = Vector3.new(0, _G.JumpHeight, 0);
+end)
+end
+end)
+end
+end)
+   end,
+})
+ 
+local Slider = MainTab:CreateSlider({
+   Name = "WalkSpeed Slider",
+   Range = {0, 100},
+   Increment = 1,
+   Suffix = "Speed",
+   CurrentValue = 16,
+   Flag = "Slider1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Value)
+        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = (Value)
+   end,
+})
+ 
+local AutoFarmTab = Window:CreateTab("AutoFarm", nil) -- Title, Image
+local Section = AutoFarmTab:CreateSection("AutoFarm")
+ 
+local Toggle = AutoFarmTab:CreateToggle({
+   Name = "Bicep Farm",
+   CurrentValue = false,
+   Flag = "Toggle1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Value)
+   while wait() do
+game:GetService("ReplicatedStorage").Packages._Index["sleitnick_knit@1.4.7"].knit.Services.ToolService.RE.onClick:FireServer()
+end
+   end,
+})
+ 
+local Toggle = AutoFarmTab:CreateToggle({
+   Name = "Hand Strength",
+   CurrentValue = false,
+   Flag = "Toggle1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Value)
+   while wait() do
+game:GetService("ReplicatedStorage").Packages._Index["sleitnick_knit@1.4.7"].knit.Services.ToolService.RE.onClick:FireServer()
+end
+   end,
+})
+ 
+local Toggle = AutoFarmTab:CreateToggle({
+   Name = "Knuckle Strength",
+   CurrentValue = false,
+   Flag = "Toggle1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Value)
+   while wait() do
+local args = {
+    [1] = "1",
+    [2] = "Tier1"
+}
+ 
+game:GetService("ReplicatedStorage").Packages._Index["sleitnick_knit@1.4.7"].knit.Services.PunchBagService.RE.onGiveStats:FireServer(unpack(args))
+end
+   end,
+})
+ 
+local TeleportsTab = Window:CreateTab("Teleports", nil) -- Title, Image
+local Section = TeleportsTab:CreateSection("Teleports")
+
+local Button = TeleportsTab:CreateButton({
+   Name = "Starter",
+   Callback = function()
+   game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-10275.7832, 3.82350993, 76.8328094, -0.0301046129, 8.44436485e-08, -0.999546766, -2.74778209e-08, 1, 8.5309523e-08, 0.999546766, 3.00335756e-08, -0.0301046129)
+   end,
+})
+
+local Button = TeleportsTab:CreateButton({
+   Name = "Second Place",
+   Callback = function()
+   game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-10276.6484, 3.82353044, 415.856476, 0.0359078608, 9.02849209e-08, -0.999355078, -2.90357427e-08, 1, 8.92999026e-08, 0.999355078, 2.58104489e-08, 0.0359078608)
+   end,
+})
+
+local Button = TeleportsTab:CreateButton({
+   Name = "Third Place",
+   Callback = function()
+   game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(11629.124, 8.84067059, 90.7528992, 0.0618475676, 4.10052603e-10, 0.998085618, 1.94444821e-10, 1, -4.22888113e-10, -0.998085618, 2.2022717e-10, 0.0618475676)
+   end,
+})
